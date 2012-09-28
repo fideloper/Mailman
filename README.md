@@ -4,11 +4,11 @@ Mailman
 A CodeIgniter library for using various third-party email systems.
 
 ## Dependencies
-Any third-party email libraries you use. Out of the box, this uses Amazon SES, which depends on [this SES library](https://github.com/joelcox/codeigniter-amazon-ses) by Joël Cox.
+This library will depend on any third-party email libraries you use. Out of the box, this uses [Amazon SES](http://aws.amazon.com/ses/), which depends on [this SES library](https://github.com/joelcox/codeigniter-amazon-ses) by Joël Cox (Not included).
 
-A future upgrade to also providing Mandrill support will depend on the Mandrill library.
+An upcoming future addition to provide support for [Mandrill](http://mandrill.com/) will depend on the Mandrill library.
 
-##Documentation
+## Documentation
 
 **Note:**
 
@@ -24,7 +24,7 @@ Parameters needed for sending email:
  6. *template_alt* - Path to the view file for the plain-text version of the email
  7. *template_data* - An array of data to be parsed by the [CI template parser library](http://codeigniter.com/user_guide/libraries/parser.html) and injected into the html and alternate plain text view files.
 
-##Usage Examples:
+## Usage Examples:
 Methods are accessible via Static methods, or via classic CI library calls.
 Here's some sample usage.
 
@@ -111,3 +111,25 @@ ClabMail::email(array(
 	 	)
 ));
 ```
+
+## License
+
+	The MIT License
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
