@@ -6,7 +6,7 @@ A CodeIgniter library for using various third-party email systems.
 ## Dependencies
 This library will depend on any third-party email libraries you use. Out of the box, this uses [Amazon SES](http://aws.amazon.com/ses/), which depends on [this SES library](https://github.com/joelcox/codeigniter-amazon-ses) by Joël Cox (Not included).
 
-An upcoming future addition to provide support for [Mandrill](http://mandrill.com/) will depend on the Mandrill library.
+An upcoming future addition to provide support for [Mandrill](http://mandrill.com/) will depend on a Mandrill library.
 
 ## Documentation
 
