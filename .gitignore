@@ -3,3 +3,5 @@
 */logs/!index.html
 */cache/*
 */cache/!index.html
+._*
+.DS_Store
