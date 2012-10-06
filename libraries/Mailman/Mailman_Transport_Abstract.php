@@ -18,6 +18,26 @@ abstract class Mailman_Transport_Abstract implements Mailman_Transport_Interface
 		return $this;
 	}
 
+	public function from($from) {
+		$this->_data['from'] = $from;
+		return $this;
+	}
+
+	public function from_name($from_name) {
+		$this->_data['from_name'] = $from_name;
+		return $this;
+	}
+
+	public function cc($cc) {
+		$this->_data['cc'] = $cc;
+		return $this;
+	}
+
+	public function bcc($bcc) {
+		$this->_data['bcc'] = $bcc;
+		return $this;
+	}
+
 	public function subject($subject) {
 		$this->_data['subject'] = $subject;
 		return $this;

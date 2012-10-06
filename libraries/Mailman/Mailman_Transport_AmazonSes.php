@@ -13,16 +13,38 @@ class Mailman_Transport_AmazonSes extends Mailman_Transport_Abstract {
 
 		$this->_core =& $this->CI->amazon_ses;
 
-		$this->CI->amazon_ses->debug(TRUE); //We want API response for logging
+		$this->_core->debug(TRUE); //We want API response for logging
 	}
 
 	public function send() {
-		$result = $this->CI->amazon_ses
+		$this->_core
 			->to( $this->get('to') )
 			->subject(  $this->get('subject') )
 			->message( $this->get('message') )
-			->message_alt( $this->get('message_alt') )
-			->send();
+			->message_alt( $this->get('message_alt') );
+
+		//Optionally over-ride configuration
+		if( $this->get('from') !== FALSE) {
+
+			$this->_core->from( $this->get('from'),  $this->get('from_name') );
+
+		}
+
+		//Optional CC
+		if( $this->get('cc') !== FALSE) {
+
+			$this->_core->cc( $this->get('cc') );
+
+		}
+
+		//Optional BCC
+		if( $this->get('bcc') !== FALSE) {
+
+			$this->_core->bcc( $this->get('bcc') );
+
+		}
+
+		$result = $this->_core->send();
 
 		$parsedResult = simplexml_load_string($result);
 

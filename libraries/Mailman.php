@@ -12,6 +12,7 @@ class Mailman {
 
 	const MAILMAN_TRANSPORT_DEFAULT = 'AmazonSes';
 	const MAILMAN_TRANSPORT_AMAZONSES = 'AmazonSes';
+	const MAILMAN_TRANSPORT_MANDRILL = 'Mandrill';
 
 	public function __construct($transport=NULL) {
 		$this->CI = & get_instance();
@@ -101,12 +102,41 @@ class Mailman {
 	*					$data[template_alt] 	#string
 	*					$data[template_data]	#array (See _template function)
 	*
+	*					Optional:
+	*					$data[from]				#string
+	*					$data[from_name]		#string
+	*					$data[cc]				#array || string
+	*					$data[bss]				#array || string
+	*
 	*/
 	private function _email($data) {
 		$this->getTransport()->to( $data['to'] )
 							 ->subject( $data['subject'] )
 							 ->message( $this->_template( $data['template_html'], $data['template_data'] ) )
 							 ->message_alt( $this->_template( $data['template_alt'], $data['template_data'] ) );
+
+		// Optionally FROM - if not taken automatically via config (a là Amazon SES)
+		if( isset($data['from']) ) {
+
+			$this->getTransport()->from( $data['from'] );
+			$this->getTransport()->from_name( isset($data['from_name']) ? $data['from_name'] : FALSE );
+
+		}
+
+		// Optionally CC
+		if( isset($data['cc']) ) {
+
+			$this->getTransport()->cc( $data['cc'] );
+
+		}
+
+		// Optionally BCC
+		if( isset($data['bcc']) ) {
+
+			$this->getTransport()->bcc( $data['bcc'] );
+
+		}
+
 		return $this->_send();
 	}
 
