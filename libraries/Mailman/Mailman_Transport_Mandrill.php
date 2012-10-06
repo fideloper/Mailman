@@ -48,9 +48,19 @@ class Mailman_Transport_Mandrill extends Mailman_Transport_Abstract {
 
 		$result = $this->_core->messages_send($data);
 
-		return $result;
+		//Need to get status of each to address in future
+		if( is_array($result) ) {
 
-		print_r($result);die();
+			if( isset($result[0]['status']) && $result[0]['status'] == 'sent' ) {
+
+				return TRUE;
+
+			}
+
+		}
+
+		return FALSE;
+
 	}
 
 }

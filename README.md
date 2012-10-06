@@ -4,12 +4,12 @@ Mailman
 A CodeIgniter library for using various third-party email systems.
 
 ## Why is this useful?
-Many web-apps are not using email platform services instead of their own server or SMTP solutions. This library provides a way for you to use any of these third-party libraries.
+Many web-apps are using email platform services instead of their own server or SMTP solutions. Mailman provides a way for you to use any of these third-party libraries interchangeably.
 
-For instance, if you reach a daily limit on AmazonSES, you can quickly and effortessly switch over to Mandrill by simply changing a configuration, instead of editing your code anywhere emails are sent.
+For instance, if you reach a daily limit on AmazonSES, you can quickly and effortessly switch over to Mandrill by simply changing a configuration, instead of editing your code everywhere emails are sent.
 
 ## The nerdier reason why
-This library has a generic Interface and implementing Abstract class. Mail transport classes such as AmazonSES or Mandrill extend this abstract class and compose their related third-party libraries (amazon_ses, mandrill PHP sdk).
+This library has a generic Interface and a implementing Abstract class. Mail transport classes such as AmazonSES or Mandrill extend this abstract class and compose their related third-party libraries (amazon_ses, mandrill PHP sdk).
 
 **Why is this cool?** This means that any code you write in your application using the Mailman library will always use the same methods no matter which email transport you use.
 
@@ -18,12 +18,12 @@ This library has a generic Interface and implementing Abstract class. Mail trans
 OOP is good!
 
 ## Dependencies
-This library will depend on any third-party email libraries you use. These libraries are referred to as "Transports."
+This library will depend on any third-party email libraries you use.
 
 Out of the box, Mailman uses [Amazon SES](http://aws.amazon.com/ses/), which depends on [this SES library](https://github.com/joelcox/codeigniter-amazon-ses) by Joël Cox (Not included).
 
 ### Update!
-Mailman now also supports [Mandrill](http://mandrill.com/) for use as a transport!
+Mailman now also supports [Mandrill](http://mandrill.com/) for use as a transport! Download the [Mandrill library](https://github.com/fideloper/CI-Mandrill).
 
 ## Documentation
 
@@ -42,9 +42,16 @@ Parameters needed for sending email:
  7. *template_data* - An array of data to be parsed by the [CI template parser library](http://codeigniter.com/user_guide/libraries/parser.html) and injected into the html and alternate plain text view files.
 
 Optional Parameters, depending on transport.
+
 1. *from* - A valid email address.
 2. *cc* - A valid email address
 3. *bcc* - A valid email address
+
+Class Constants:
+
+1. Mailmail::MAILMAN_TRANSPORT_DEFAULT		= 'AmazonSes'
+2. Mailmail::MAILMAN_TRANSPORT_AMAZONSES	= 'AmazonSes'
+3. Mailmail::MAILMAN_TRANSPORT_MANDRILL	= 'Mandrill'
 
 ## Usage Examples:
 Methods are accessible via Static methods, or via classic CI library calls.
@@ -80,7 +87,7 @@ $this->mailman->sendmail(array(
 ));
 
 ## Alternatively, chain the methods
-$this->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->mailman->sendmail(array(
+$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES)->sendmail(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -114,7 +121,7 @@ $this->mailman->sendmail(array(
 ));
 
 ## OR change the default yourself and set transport to it:
-$this->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->mailman->sendmail(array(
+$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT)->sendmail(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -132,13 +139,13 @@ $this->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->mailman->sendmail(arra
 
 
 //Super-cool static method way
-mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES');
+$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES);
 
 ## OR
-mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->sendmail( ... );
+$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES)->sendmail( ... );
 
 ## OR default to AmazonSes
-mailman::email(array(
+$this->mailman::email(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -156,7 +163,7 @@ mailman::email(array(
 ```
 
 ## My library does more, how do I get to it?
-If the email trainsport does more, or you need extra options, there is an available function getCore() in each transport, which will give you direct access to that library. Here's an example.
+If the email transport does more, or you need extra options, there is an available function getCore() in each transport, which will give you direct access to that library. Here's an example.
 
 ```php
 $this->load->library('mailman');
@@ -174,8 +181,8 @@ print_r($webhooks);
 
 ## To Do:
 1. Add more libraries (Sendgrid, Postmark)
-2. Support array or multiple to, cc, bcc fields as libraries allow
-3. Wiki for library-specific and extra information
+2. Support arrays for multiple to, cc, bcc fields [as email systems allow]
+3. Wiki for platform-specific and extra information
 
 ## License
 
