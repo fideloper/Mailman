@@ -42,6 +42,7 @@ Parameters needed for sending email:
  7. *template_data* - An array of data to be parsed by the [CI template parser library](http://codeigniter.com/user_guide/libraries/parser.html) and injected into the html and alternate plain text view files.
 
 Optional Parameters, depending on transport.
+
 1. *from* - A valid email address.
 2. *cc* - A valid email address
 3. *bcc* - A valid email address
