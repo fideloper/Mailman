@@ -81,7 +81,7 @@ $this->mailman->sendmail(array(
 ));
 
 ## Alternatively, chain the methods
-$this->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->mailman->sendmail(array(
+$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->sendmail(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -115,7 +115,7 @@ $this->mailman->sendmail(array(
 ));
 
 ## OR change the default yourself and set transport to it:
-$this->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->mailman->sendmail(array(
+$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->sendmail(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -133,13 +133,13 @@ $this->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->mailman->sendmail(arra
 
 
 //Super-cool static method way
-mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES');
+$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES');
 
 ## OR
-mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->sendmail( ... );
+$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->sendmail( ... );
 
 ## OR default to AmazonSes
-mailman::email(array(
+$this->mailman::email(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
