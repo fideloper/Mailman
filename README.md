@@ -180,9 +180,10 @@ print_r($webhooks);
 ```
 
 ## To Do:
-1. Add more libraries (Sendgrid, Postmark)
-2. Support arrays for multiple to, cc, bcc fields [as email systems allow]
-3. Wiki for platform-specific and extra information
+1. Make email transport used a config value, override-able in code (instead of current in-code selection with default)
+2. Add more libraries (Sendgrid, Postmark)
+3. Support arrays for multiple to, cc, bcc fields [as email systems allow]
+4. Wiki for platform-specific and extra information
 
 ## License
 
