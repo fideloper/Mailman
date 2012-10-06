@@ -5,6 +5,14 @@ interface Mailman_Transport_Interface {
 	//Mail-info functions needed (Left out: CC, BCC)
 	public function to($to);
 
+	public function from($from);
+
+	public function from_name($from_name);
+
+	public function cc($cc);
+
+	public function bcc($bcc);
+
 	public function subject($subject);
 
 	public function message($message);
