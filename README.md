@@ -23,7 +23,7 @@ This library will depend on any third-party email libraries you use. These libra
 Out of the box, Mailman uses [Amazon SES](http://aws.amazon.com/ses/), which depends on [this SES library](https://github.com/joelcox/codeigniter-amazon-ses) by Joël Cox (Not included).
 
 ### Update!
-Mailman now also supports [Mandrill](http://mandrill.com/) for use as a transport!
+Mailman now also supports [Mandrill](http://mandrill.com/) for use as a transport! Download the [Mandrill library](https://github.com/fideloper/CI-Mandrill).
 
 ## Documentation
 

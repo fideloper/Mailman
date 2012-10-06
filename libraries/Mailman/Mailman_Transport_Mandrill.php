@@ -48,9 +48,10 @@ class Mailman_Transport_Mandrill extends Mailman_Transport_Abstract {
 
 		$result = $this->_core->messages_send($data);
 
+print_r($result);
+
 		return $result;
 
-		print_r($result);die();
 	}
 
 }
