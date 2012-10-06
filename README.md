@@ -163,7 +163,7 @@ $this->mailman::email(array(
 ```
 
 ## My library does more, how do I get to it?
-If the email trainsport does more, or you need extra options, there is an available function getCore() in each transport, which will give you direct access to that library. Here's an example.
+If the email transport does more, or you need extra options, there is an available function getCore() in each transport, which will give you direct access to that library. Here's an example.
 
 ```php
 $this->load->library('mailman');
