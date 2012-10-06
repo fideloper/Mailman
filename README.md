@@ -47,6 +47,12 @@ Optional Parameters, depending on transport.
 2. *cc* - A valid email address
 3. *bcc* - A valid email address
 
+Class Constants:
+
+1. Mailmail::MAILMAN_TRANSPORT_DEFAULT		= 'AmazonSes'
+2. Mailmail::MAILMAN_TRANSPORT_AMAZONSES	= 'AmazonSes'
+3. Mailmail::MAILMAN_TRANSPORT_MANDRILL	= 'Mandrill'
+
 ## Usage Examples:
 Methods are accessible via Static methods, or via classic CI library calls.
 Here's some sample usage.
@@ -81,7 +87,7 @@ $this->mailman->sendmail(array(
 ));
 
 ## Alternatively, chain the methods
-$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->sendmail(array(
+$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES)->sendmail(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -115,7 +121,7 @@ $this->mailman->sendmail(array(
 ));
 
 ## OR change the default yourself and set transport to it:
-$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->sendmail(array(
+$this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT)->sendmail(array(
 	'to' => 'example@example.com',
 	'subject' => 'Test Email',
 	'template_html' => 'email/example',
@@ -133,10 +139,10 @@ $this->mailman->setTransport(Mailman::MAILMAN_TRANSPORT_DEFAULT')->sendmail(arra
 
 
 //Super-cool static method way
-$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES');
+$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES);
 
 ## OR
-$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES')->sendmail( ... );
+$this->mailman::instance()->setTransport(Mailman::MAILMAN_TRANSPORT_AMAZONSES)->sendmail( ... );
 
 ## OR default to AmazonSes
 $this->mailman::email(array(
