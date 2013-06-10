@@ -15,8 +15,6 @@ This library has a generic Interface and a implementing Abstract class. Mail tra
 
 > If you change from Amazon to Mandrill or another third-party email system, you only need to change a configuration, rather than changes in your code.
 
-OOP is good!
-
 ## Dependencies
 This library will depend on any third-party email libraries you use.
 
@@ -162,7 +160,7 @@ $this->mailman::email(array(
 ));
 ```
 
-## My library does more, how do I get to it?
+## My mail provider does more stuff, how do I get to it in code?
 If the email transport does more, or you need extra options, there is an available function getCore() in each transport, which will give you direct access to that library. Here's an example.
 
 ```php
